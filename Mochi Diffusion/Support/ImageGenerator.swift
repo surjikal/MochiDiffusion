@@ -249,7 +249,6 @@ extension URL {
             at: self,
             includingPropertiesForKeys: nil,
             options: [.skipsHiddenFiles]
-        )
-        .filter(\.hasDirectoryPath)
+        ).filter({ $0.hasDirectoryPath || $0.resolvingSymlinksInPath().hasDirectoryPath })
     }
 }
